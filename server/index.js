@@ -11,7 +11,10 @@ const authRouter = require('./routes/auth')
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: 'https://task-todo-nwlj.vercel.app', 
+    credentials: true,
+  }));
 
 app.use('/api/v1/task', taskRouter)
 app.use('/api/v1/auth', authRouter)
