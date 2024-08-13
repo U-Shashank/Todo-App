@@ -10,7 +10,7 @@ import { useNavigate, Link } from 'react-router-dom'
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const dispatch = useDispatch()
-  const { isLoading, error } = useSelector((state) => state.auth)
+  const { isLoading, error, isAuthenticated } = useSelector((state) => state.auth)
 
   const navigate = useNavigate()
 
@@ -21,12 +21,14 @@ const Login = () => {
     return () => dispatch(clearError())
   }, [error])
 
-  const onSubmit = (data) => {
-    dispatch(loginUser(data))
-    if (!error) {
+  useEffect(() => {
+    if (isAuthenticated && !error) {
       navigate('/')
     }
+  }, [isAuthenticated, error, navigate])
 
+  const onSubmit = (data) => {
+    dispatch(loginUser(data))
   }
 
   return (

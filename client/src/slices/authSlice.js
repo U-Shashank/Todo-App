@@ -6,6 +6,7 @@ const initialState = {
   token: localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null,
   isLoading: false,
   error: null,
+  isAuthenticated: localStorage.getItem('token') ? true : false,
 }
 
 export const loginUser = createAsyncThunk(
@@ -47,6 +48,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.user = null
       state.token = null
+      state.isAuthenticated = false
       localStorage.removeItem('token')
       localStorage.removeItem('user')
       },
@@ -63,6 +65,7 @@ const authSlice = createSlice({
         state.isLoading = false
         state.user = action.payload.user
         state.token = action.payload.token
+        state.isAuthenticated = true
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false
