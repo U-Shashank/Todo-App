@@ -4,7 +4,7 @@ import TaskItem from './TaskItem';
 function TaskList({ tasks }) {
   
   if (!tasks || tasks.length === 0) {
-    return <p className="text-gray-500 text-center">No tasks available.</p>;
+    return <p className="text-gray-500 text-center">No tasks available</p>;
   }
 
   return (

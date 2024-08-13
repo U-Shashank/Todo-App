@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTask } from '../slices/tasksSlice';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTask } from '../slices/tasksSlice'
 
 function AddTask() {
-  const [name, setName] = useState('');
-  const dispatch = useDispatch();
+  const [name, setName] = useState('')
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.auth.user);
+
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (name.trim()) {
-      dispatch(addTask({ name, completed: false }));
-      setName('');
+      dispatch(addTask({ name, completed: false, createdBy: user._id }))
+      setName('')
     }
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
@@ -32,7 +34,7 @@ function AddTask() {
         </button>
       </div>
     </form>
-  );
+  )
 }
 
-export default AddTask;
+export default AddTask

@@ -61,7 +61,7 @@ const tasksSlice = createSlice({
         state.error = action.payload || 'Something went wrong'
       })
       .addCase(addTask.fulfilled, (state, action) => {
-        state.items.push(action.payload)
+        state.items.unshift(action.payload)
       })
       .addCase(addTask.rejected, (state, action) => {
         state.status = 'failed'

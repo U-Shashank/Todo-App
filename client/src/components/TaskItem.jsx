@@ -19,7 +19,7 @@ function TaskItem({ task }) {
         type="checkbox"
         checked={task.completed}
         onChange={handleToggle}
-        className="h-6 w-6 text-cyan-500 rounded-md border-gray-300 focus:ring-cyan-500"
+        className="h-6 w-6 text-cyan-500 rounded-md border-gray-300 focus:ring-cyan-500 cursor-pointer"
       />
       <span
         className={`flex-1 text-lg ${
