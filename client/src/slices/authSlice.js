@@ -17,9 +17,7 @@ export const loginUser = createAsyncThunk(
         return rejectWithValue(response.data.msg)
       }
       localStorage.setItem('token', JSON.stringify(response.data.token))
-      localStorage.setItem('user', JSON.stringify(response.data.user))
-      console.log(response.data);
-      
+      localStorage.setItem('user', JSON.stringify(response.data.user))      
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data.msg)
@@ -32,7 +30,6 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await registerUserAPI(userData)
-      console.log(response.data)
       if(!response.data.success) {
         return rejectWithValue(response.data.msg)
       } 

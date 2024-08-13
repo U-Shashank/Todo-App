@@ -5,9 +5,7 @@ export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (_, { rejec
   const response = await api.fetchTasks()
   if(!response.data.success) {
     return rejectWithValue(response.data.msg)
-  }
-  console.log(response.data)
-  
+  }  
   return response.data.tasks
 })
 
