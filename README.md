@@ -31,7 +31,7 @@ To run locally on your machine, follow these steps:
    - JWT_SECRET = your jwt secret
 
 5. **Run the App**
-   ### In the main directory Swift-Cart:
+   ### In the main directory:
    ```bash
    npm run start
    ```
